@@ -65,6 +65,16 @@ public class Main {
         }
 
 
+        // directivo con mas gente a su cargo
+
+        for (Empresa emp : empresas) {
+            for (Empleado empleado : emp.getListaEmpleados()) {
+                if (empleado instanceof Directivo) {
+                    Directivo directivo = (Directivo) empleado;
+                    System.out.println("Directivo: " + directivo.getNombre() + " tiene a su cargo " + directivo.getSubordinado().size() + " empleados.");
+                }
+            }
+        }
 
 
 
