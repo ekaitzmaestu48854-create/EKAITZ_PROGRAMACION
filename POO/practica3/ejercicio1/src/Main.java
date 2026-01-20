@@ -11,7 +11,13 @@ public class Main {
     private static ArrayList<Autor> autores = new ArrayList<>();
 
     public static void main(String[] args) {
+        IntroducirAutores();
+        IntroducirLibros();
+        IntroducirAlumnos();
 
+
+
+        menu();
 
     }
 
@@ -31,10 +37,10 @@ public class Main {
                     alquilarLibro();
                     break;
                 case 2:
-
+                    devolverLibro();
                     break;
                 case 3:
-
+                    mostrarDatos();
                     break;
                 case 4:
                     System.exit(0);
@@ -77,6 +83,7 @@ public class Main {
 
     public static void alquilarLibro() {
         System.out.println("Seleccione el alumno que alquila el libro:");
+
         for (int i = 0; i < alumnos.size(); i++) {
             System.out.println((i + 1) + ". " + alumnos.get(i).getNombre());
         }
@@ -99,6 +106,40 @@ public class Main {
         }
 
     }
+
+    public static void devolverLibro() {
+     System.out.println("Seleccione le alumno:");
+        for (int i = 0; i < alumnos.size(); i++) {
+            System.out.println((i + 1) + ". " + alumnos.get(i).getNombre());
+        }
+        int alumnoIndex = sc.nextInt() - 1;
+        sc.nextLine();
+        Alumno alumno = alumnos.get(alumnoIndex);
+        if (alumno.getLibrosAlquilados().isEmpty()) {
+            System.out.println("El alumno no tiene libros alquilados.");
+            return;
+        }
+        System.out.println("Seleccione el libro a devolver:");
+        for (int i = 0; i < alumno.getLibrosAlquilados().size(); i++) {
+            System.out.println((i + 1) + ". " + alumno.getLibrosAlquilados().get(i).getTitulo());
+        }
+        int libroIndex = sc.nextInt() - 1;
+        sc.nextLine();
+        Libros libro = alumno.getLibrosAlquilados().get(libroIndex);
+        alumno.getLibrosAlquilados().remove(libro);
+        libro.setNumeroEjemplares(libro.getNumeroEjemplares() + 1);
+        System.out.println("Libro devuelto con éxito.");
+    }
+
+    public static void mostrarDatos() {
+        System.out.println("Datos de Alumnos y sus Libros Alquilados:");
+        for (Alumno alumno : alumnos) {
+            alumno.mostrarInfo();
+            System.out.println("==========");
+        }
+    }
+
+
 
 
 }
