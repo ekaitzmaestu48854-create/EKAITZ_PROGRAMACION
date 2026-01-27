@@ -5,11 +5,11 @@ public class Veterinario extends Persona {
     private int numSeguridadSocial;
     private ArrayList<Mascota> listaPacientes;
 
-    public Veterinario(String nombre, String direccion, String telefono, String dni, int numSeguridadSocial) {
+    public Veterinario(String nombre, String direccion, String telefono, String dni, int numSeguridadSocial, ArrayList<Mascota> listaPacientes) {
         super(nombre, direccion, telefono);
         this.dni = dni;
         this.numSeguridadSocial = numSeguridadSocial;
-        this.listaPacientes = new ArrayList<>();
+        this.listaPacientes = listaPacientes;
     }
 
     public String getDni() {
@@ -35,5 +35,4 @@ public class Veterinario extends Persona {
     public void setListaPacientes(ArrayList<Mascota> listaPacientes) {
         this.listaPacientes = listaPacientes;
     }
-
 }
