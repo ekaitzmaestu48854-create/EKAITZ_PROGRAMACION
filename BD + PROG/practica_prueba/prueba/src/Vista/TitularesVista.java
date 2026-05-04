@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.ControladorTitulares;
 import Modelo.Titulares;
 
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class TitularesVista {
 
         switch(opcion){
             case 1:
+                agregarTitulares();
                 break;
             case 2:
                 break;
@@ -49,6 +51,7 @@ public class TitularesVista {
 
         String dniTitular = sc.next();
 
+        ControladorTitulares.crearTitulares(nombreTitular, dniTitular);
 
 
 
